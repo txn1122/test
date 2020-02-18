@@ -1,0 +1,23 @@
+#zuul网关
+
+#服务端口
+server:
+  port: 8300
+#服务名
+spring:
+  application:
+    name: service-zuul
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8082/eureka/  #将服务注册到注册中心
+    register-with-eureka: true
+    fetch-registry: true
+
+zuul:
+  routes:
+    api-a:
+      serviceId: service-companyInfo
+      path: /api-a/**
+

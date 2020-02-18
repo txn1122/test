@@ -1,0 +1,20 @@
+#eureka注册中心
+
+#服务端口
+server:
+  port: 8082
+
+spring:
+  application:
+    name: eureka-server
+
+eureka:
+  instance:
+    hostname: localhost
+  client:
+    register-with-eureka: false #不向注册中心注册自己
+    fetch-registry: false #设置是否从注册中心获取注册信息
+    #单点的Eureka所以不需要同步其他EurekaServer节点的数据，设为false
+    serviceUrl:
+      defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka/  # http://localhost:8082/eureka/
+
